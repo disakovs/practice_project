@@ -1,0 +1,23 @@
+[
+  {
+    "full_name": "Liubov Buchovska",
+    "phone_number": "2174126346",
+    "email": "disakovs@yahoo.com",
+    "tags": "t",
+    "id": 3
+  },
+  {
+    "full_name": "Dmitri",
+    "phone_number": "2174126346",
+    "email": "disakovs@yahoo.com",
+    "tags": "haha",
+    "id": 5
+  },
+  {
+    "full_name": "Dmitri",
+    "phone_number": "2174126346",
+    "email": "disakovs@yahoo.com",
+    "tags": "wow,",
+    "id": 7
+  }
+]

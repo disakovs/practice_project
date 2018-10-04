@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="stylesheets/white_reset.css" />
+  <link rel="stylesheet" href="stylesheets/manager.css" />
+  <script src="/javascripts/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Contact Manager</h1>
+    <h3>Using Backbone.js, Localstorage, RequireJS, Handlebar and Bootstrap</h3>
+  </header>
+  <main>
+    <div id='manage_contacts'>
+      <section>
+        <input type='button' value='Add Contact'>
+        <input id='search' type='text' placeholder='Search'>
+      </section>
+      <div id='all_contacts'>
+      </div>
+    </div>
+    <form id='create_contact' method='post' action='/api/contacts/'>
+      <h2>Create Contact</h2>
+      <label>Full Name:
+        <input type='text' name='full_name' required> 
+      </label>
+      <label>Email:
+        <input type='text' name='email' required> 
+      </label>
+      <label>Telephone number:
+        <input type='text' name='phone_number'required> 
+      </label>
+      <label>Tags:
+        <input type='text' name='tags'> 
+      </label>
+      <input type='submit' value='Submit'>
+      <input type='button' value='Cancel'>
+    </form>
+    <div id='edit'>
+    </div>
+    <div class='not_found'>
+      <p>There are no contacts starting with <strong></strong>.</p>
+    </div>
+  </main>
+  <script id='contact_outline' type='text/x-handlebars'>
+    {{#each contacts}}
+    <div class=contact data-id={{id}}>
+      <h3>{{full_name}}</h3>
+      <dl>
+        <dt>Phone Number:</dt>
+        <dd>{{phone_number}}</dd>
+        <dt>Email:</dt>
+        <dd>{{email}}</dd>
+        <dt>Tags:</dt>
+        {{#each tags}}
+        <dd>
+          <ul>
+            <li><a href='#' class='tag'>{{this}}</a></li>
+          </ul>
+        </dd>
+        {{/each}}
+      </dl>
+      <input type='button' value='Edit'>
+      <input type='button' value='Delete'>
+    </div>
+    {{/each}}
+  </script>
+  <script id='edit_contact' type='text/x-handlebars'>
+    <form method='put' action='/api/contacts/' data-id={{id}}>
+      <h2>Edit Contact</h2> 
+      <label>Full Name:
+        <input type='text' name='full_name' value={{full_name}} required> 
+      </label>
+      <label>Email:
+        <input type='text' name='email' value={{email}} required> 
+      </label>
+      <label>Telephone number:
+        <input type='text' name='phone_number' value={{phone_number}} required> 
+      </label>
+      <label>Tags:
+        <input type='text' name='tags' value={{tags}}> 
+      </label>
+      <input type='submit' value='Submit'>
+      <input type='button' value='Cancel'>
+    </form>
+  </script>
+  <script src="/javascripts/mgr.js"></script>
+</body>
+  
+</html>
